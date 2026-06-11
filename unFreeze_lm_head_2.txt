@@ -1,0 +1,439 @@
+/usr/local/lib/python3.12/dist-packages/huggingface_hub/utils/_auth.py:93: UserWarning: 
+The secret `HF_TOKEN` does not exist in your Colab secrets.
+To authenticate with the Hugging Face Hub, create a token in your settings tab (https://huggingface.co/settings/tokens), set it as secret in your Google Colab and restart your session.
+You will be able to reuse this secret in all of your notebooks.
+Please note that authentication is recommended but still optional to access public models or datasets.
+  warnings.warn(
+Downloading builder script: 
+ 8.15k/? [00:00<00:00, 578kB/s]
+Downloading builder script: 
+ 9.01k/? [00:00<00:00, 787kB/s]
+Downloading builder script: 
+ 6.14k/? [00:00<00:00, 625kB/s]
+[Init] Preprocessor…
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+WARNING:huggingface_hub.utils._http:Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[Init] GlossEncoder (XLM-RoBERTa-base fine-tune)…
+tokenizer_config.json: 100%
+ 25.0/25.0 [00:00<00:00, 2.21kB/s]
+sentencepiece.bpe.model: 100%
+ 5.07M/5.07M [00:00<00:00, 17.2MB/s]
+tokenizer.json: 
+ 9.10M/? [00:00<00:00, 22.4MB/s]
+config.json: 100%
+ 615/615 [00:00<00:00, 58.1kB/s]
+model.safetensors: 100%
+ 1.12G/1.12G [00:09<00:00, 133MB/s]
+Loading weights: 100%
+ 199/199 [00:00<00:00, 561.17it/s, Materializing param=pooler.dense.weight]
+XLMRobertaModel LOAD REPORT from: xlm-roberta-base
+Key                       | Status     |  | 
+--------------------------+------------+--+-
+lm_head.layer_norm.bias   | UNEXPECTED |  | 
+lm_head.dense.weight      | UNEXPECTED |  | 
+lm_head.bias              | UNEXPECTED |  | 
+lm_head.layer_norm.weight | UNEXPECTED |  | 
+lm_head.dense.bias        | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+  [XLM-R] total=278,043,648 | frozen=249,101,568 | trainable=28,942,080 (top 4 layers)
+[Init] SemanticRecoveryModule…
+[Init] OrderRecoveryModule…
+[Init] RoleAwareFusion…
+[Init] RoleAttentionBias…
+[Init] ARTextDecoder (mBART-50-large fine-tune)…
+tokenizer_config.json: 100%
+ 531/531 [00:00<00:00, 48.4kB/s]
+sentencepiece.bpe.model: 100%
+ 5.07M/5.07M [00:00<00:00, 25.3MB/s]
+special_tokens_map.json: 100%
+ 649/649 [00:00<00:00, 64.5kB/s]
+config.json: 
+ 1.42k/? [00:00<00:00, 112kB/s]
+pytorch_model.bin: 100%
+ 2.44G/2.44G [00:21<00:00, 112MB/s]
+model.safetensors: 100%
+ 2.44G/2.44G [00:24<00:00, 117MB/s]
+Loading weights: 100%
+ 519/519 [00:02<00:00, 287.74it/s, Materializing param=model.shared.weight]
+The tied weights mapping and config for this model specifies to tie model.shared.weight to lm_head.weight, but both are present in the checkpoints, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning
+The tied weights mapping and config for this model specifies to tie model.shared.weight to model.decoder.embed_tokens.weight, but both are present in the checkpoints, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning
+The tied weights mapping and config for this model specifies to tie model.shared.weight to model.encoder.embed_tokens.weight, but both are present in the checkpoints, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning
+generation_config.json: 100%
+ 261/261 [00:00<00:00, 6.11kB/s]
+  [mBART] decoder total=458,670,080 | decoder trainable=151,154,688 | lm_head trainable=256,055,296
+
+[Init] Pipeline ready.
+
+Total params     : 1,676,014,267
+Trainable params : 455,077,307
+
+[Param groups]
+  new_modules             lr=3.00e-04  params=18,927,547
+  mbart_decoder           lr=3.00e-05  params=151,154,688
+  xlmr_top_layers         lr=9.00e-06  params=28,351,488
+  lm_head                 lr=6.00e-06  params=256,055,296
+
+/usr/local/lib/python3.12/dist-packages/torch/_compile.py:54: UserWarning: optimizer contains a parameter group with duplicate parameters; in future, this will cause an error; see github.com/pytorch/pytorch/issues/40967 for more information
+  return disable_fn(*args, **kwargs)
+Epoch 1 [train]: 100%|██████████| 1774/1774 [12:37<00:00,  2.34it/s, loss=5.7498]
+Epoch 1 [val]: 100%|██████████| 130/130 [01:30<00:00,  1.43it/s]
+
+────────────────────────────────────────────────────────────────────────
+  Sample predictions – Epoch 1
+────────────────────────────────────────────────────────────────────────
+  [1] Gloss : DRUCK TIEF KOMMEN
+      Hyp   : am dienstag wird es dann wieder wärmer
+      Ref   : tiefer luftdruck bestimmt in den nächsten tagen unser wetter
+  [2] Gloss : ES-BEDEUTET VIEL WOLKE UND KOENNEN REGEN GEWITTER KOENNEN
+      Hyp   : und nun die wettervorhersage für morgen dienstag
+      Ref   : das bedeutet viele wolken und immer wieder zum teil kräftige schauer und gewitter
+  [3] Gloss : WIND MAESSIG SCHWACH REGION WENN GEWITTER WIND KOENNEN
+      Hyp   : und nun die wettervorhersage für morgen dienstag
+      Ref   : meist weht nur ein schwacher wind aus unterschiedlichen richtungen der bei schauern und gewittern stark böig sein kann
+  [4] Gloss : MITTWOCH REGEN KOENNEN NORDWEST WAHRSCHEINLICH NORD STARK WIND
+      Hyp   : am dienstag im süden und südwesten kräftiger wind aus der nordwesthälfte
+      Ref   : am mittwoch hier und da nieselregen in der nordwesthälfte an den küsten kräftiger wind
+  [5] Gloss : JETZT WETTER WIE-AUSSEHEN MORGEN FREITAG SECHSTE MAI ZEIGEN-BILDSCHIRM
+      Hyp   : und nun die wettervorhersage für morgen dienstag den sechsten januar
+      Ref   : und nun die wettervorhersage für morgen freitag den sechsten mai
+────────────────────────────────────────────────────────────────────────
+Epoch 1 | val_loss=2.8636 | BLEU=4.16 | BLEU-1=21.58 BLEU-2=6.39 BLEU-3=4.86 BLEU-4=4.20 | chrF=21.22 | chrF++=18.31 | ROUGE-1=17.17 ROUGE-2=6.15 ROUGE-L=15.55
+Epoch   1 | train_loss=5.7498 | val_loss=2.8636 | BLEU=4.16
+Epoch 2 [train]: 100%|██████████| 1774/1774 [12:31<00:00,  2.36it/s, loss=2.5904]
+Epoch 2 [val]: 100%|██████████| 130/130 [02:00<00:00,  1.08it/s]
+
+────────────────────────────────────────────────────────────────────────
+  Sample predictions – Epoch 2
+────────────────────────────────────────────────────────────────────────
+  [1] Gloss : DRUCK TIEF KOMMEN
+      Hyp   : das tief über dem mittelmeer zieht weiter nach deutschland
+      Ref   : tiefer luftdruck bestimmt in den nächsten tagen unser wetter
+  [2] Gloss : ES-BEDEUTET VIEL WOLKE UND KOENNEN REGEN GEWITTER KOENNEN
+      Hyp   : am mittwoch schauer und gewittern in der nordwesthälfte vereinzelt regnet es vor allem in der südosthälfte
+      Ref   : das bedeutet viele wolken und immer wieder zum teil kräftige schauer und gewitter
+  [3] Gloss : WIND MAESSIG SCHWACH REGION WENN GEWITTER WIND KOENNEN
+      Hyp   : der wind weht schwach bis mäßig an der küste auch frisch
+      Ref   : meist weht nur ein schwacher wind aus unterschiedlichen richtungen der bei schauern und gewittern stark böig sein kann
+  [4] Gloss : MITTWOCH REGEN KOENNEN NORDWEST WAHRSCHEINLICH NORD STARK WIND
+      Hyp   : am mittwoch regnet es in der nordwesthälfte und im nordwesten mäßiger bis frischer wind aus nordwest bis nordwest
+      Ref   : am mittwoch hier und da nieselregen in der nordwesthälfte an den küsten kräftiger wind
+  [5] Gloss : JETZT WETTER WIE-AUSSEHEN MORGEN FREITAG SECHSTE MAI ZEIGEN-BILDSCHIRM
+      Hyp   : und nun die wettervorhersage für morgen freitag den fünfundzwanzigsten oktober
+      Ref   : und nun die wettervorhersage für morgen freitag den sechsten mai
+────────────────────────────────────────────────────────────────────────
+Epoch 2 | val_loss=1.9881 | BLEU=9.69 | BLEU-1=33.85 BLEU-2=14.30 BLEU-3=7.72 BLEU-4=5.53 | chrF=33.93 | chrF++=30.57 | ROUGE-1=31.99 ROUGE-2=15.92 ROUGE-L=28.37
+Epoch   2 | train_loss=2.5904 | val_loss=1.9881 | BLEU=9.69
+Epoch 3 [train]: 100%|██████████| 1774/1774 [12:28<00:00,  2.37it/s, loss=1.9431]
+Epoch 3 [val]: 100%|██████████| 130/130 [01:43<00:00,  1.25it/s]
+
+────────────────────────────────────────────────────────────────────────
+  Sample predictions – Epoch 3
+────────────────────────────────────────────────────────────────────────
+  [1] Gloss : DRUCK TIEF KOMMEN
+      Hyp   : das tief über dem atlantik lenkt tiefdruckluft nach deutschland
+      Ref   : tiefer luftdruck bestimmt in den nächsten tagen unser wetter
+  [2] Gloss : ES-BEDEUTET VIEL WOLKE UND KOENNEN REGEN GEWITTER KOENNEN
+      Hyp   : in den kommenden tagen ist es teils wolkig teils kräftige schauer und gewitter möglich
+      Ref   : das bedeutet viele wolken und immer wieder zum teil kräftige schauer und gewitter
+  [3] Gloss : WIND MAESSIG SCHWACH REGION WENN GEWITTER WIND KOENNEN
+      Hyp   : der wind weht schwach bis mäßig aus unterschiedlichen richtungen
+      Ref   : meist weht nur ein schwacher wind aus unterschiedlichen richtungen der bei schauern und gewittern stark böig sein kann
+  [4] Gloss : MITTWOCH REGEN KOENNEN NORDWEST WAHRSCHEINLICH NORD STARK WIND
+      Hyp   : am mittwoch regnet es in der nordhälfte gebietsweise vereinzelt schauert es auf
+      Ref   : am mittwoch hier und da nieselregen in der nordwesthälfte an den küsten kräftiger wind
+  [5] Gloss : JETZT WETTER WIE-AUSSEHEN MORGEN FREITAG SECHSTE MAI ZEIGEN-BILDSCHIRM
+      Hyp   : und nun die wettervorhersage für morgen freitag den siebten mai
+      Ref   : und nun die wettervorhersage für morgen freitag den sechsten mai
+────────────────────────────────────────────────────────────────────────
+Epoch 3 | val_loss=1.6175 | BLEU=14.18 | BLEU-1=41.37 BLEU-2=21.32 BLEU-3=13.21 BLEU-4=9.33 | chrF=37.47 | chrF++=34.60 | ROUGE-1=38.51 ROUGE-2=21.94 ROUGE-L=35.23
+Epoch   3 | train_loss=1.9431 | val_loss=1.6175 | BLEU=14.18
+Epoch 4 [train]: 100%|██████████| 1774/1774 [12:26<00:00,  2.38it/s, loss=1.6434]
+Epoch 4 [val]: 100%|██████████| 130/130 [01:46<00:00,  1.22it/s]
+
+────────────────────────────────────────────────────────────────────────
+  Sample predictions – Epoch 4
+────────────────────────────────────────────────────────────────────────
+  [1] Gloss : DRUCK TIEF KOMMEN
+      Hyp   : tiefer luftdruck bestimmt unser wetter
+      Ref   : tiefer luftdruck bestimmt in den nächsten tagen unser wetter
+  [2] Gloss : ES-BEDEUTET VIEL WOLKE UND KOENNEN REGEN GEWITTER KOENNEN
+      Hyp   : es gibt viele wolken die hier und da regen oder gewitter bringen
+      Ref   : das bedeutet viele wolken und immer wieder zum teil kräftige schauer und gewitter
+  [3] Gloss : WIND MAESSIG SCHWACH REGION WENN GEWITTER WIND KOENNEN
+      Hyp   : der wind weht schwach bis mäßig an den küsten auch frisch
+      Ref   : meist weht nur ein schwacher wind aus unterschiedlichen richtungen der bei schauern und gewittern stark böig sein kann
+  [4] Gloss : MITTWOCH REGEN KOENNEN NORDWEST WAHRSCHEINLICH NORD STARK WIND
+      Hyp   : am mittwoch regnet es im norden und nordwesten gebietsweise sonst ist es teilweise stark bewölkt
+      Ref   : am mittwoch hier und da nieselregen in der nordwesthälfte an den küsten kräftiger wind
+  [5] Gloss : JETZT WETTER WIE-AUSSEHEN MORGEN FREITAG SECHSTE MAI ZEIGEN-BILDSCHIRM
+      Hyp   : und nun die wettervorhersage für morgen freitag den sechsten mai
+      Ref   : und nun die wettervorhersage für morgen freitag den sechsten mai
+────────────────────────────────────────────────────────────────────────
+Epoch 4 | val_loss=1.4537 | BLEU=16.94 | BLEU-1=46.17 BLEU-2=25.00 BLEU-3=15.50 BLEU-4=11.01 | chrF=41.59 | chrF++=38.73 | ROUGE-1=43.99 ROUGE-2=26.50 ROUGE-L=40.80
+Epoch   4 | train_loss=1.6434 | val_loss=1.4537 | BLEU=16.94
+Epoch 5 [train]: 100%|██████████| 1774/1774 [12:30<00:00,  2.37it/s, loss=1.4577]
+Epoch 5 [val]: 100%|██████████| 130/130 [02:00<00:00,  1.08it/s]
+
+────────────────────────────────────────────────────────────────────────
+  Sample predictions – Epoch 5
+────────────────────────────────────────────────────────────────────────
+  [1] Gloss : DRUCK TIEF KOMMEN
+      Hyp   : tiefer luftdruck bestimmt unser wetter
+      Ref   : tiefer luftdruck bestimmt in den nächsten tagen unser wetter
+  [2] Gloss : ES-BEDEUTET VIEL WOLKE UND KOENNEN REGEN GEWITTER KOENNEN
+      Hyp   : der tag bringt viele wolken und viele schauer und gewitter
+      Ref   : das bedeutet viele wolken und immer wieder zum teil kräftige schauer und gewitter
+  [3] Gloss : WIND MAESSIG SCHWACH REGION WENN GEWITTER WIND KOENNEN
+      Hyp   : der wind weht schwach bis mäßig an der see auch frisch mit starken bis stürmischen böen
+      Ref   : meist weht nur ein schwacher wind aus unterschiedlichen richtungen der bei schauern und gewittern stark böig sein kann
+  [4] Gloss : MITTWOCH REGEN KOENNEN NORDWEST WAHRSCHEINLICH NORD STARK WIND
+      Hyp   : am mittwoch regnet oder schauert es in der nordwesthälfte teilweise kräftig im nordwesten ist es stark bewölkt
+      Ref   : am mittwoch hier und da nieselregen in der nordwesthälfte an den küsten kräftiger wind
+  [5] Gloss : JETZT WETTER WIE-AUSSEHEN MORGEN FREITAG SECHSTE MAI ZEIGEN-BILDSCHIRM
+      Hyp   : und nun die wettervorhersage für morgen freitag den sechsten mai
+      Ref   : und nun die wettervorhersage für morgen freitag den sechsten mai
+────────────────────────────────────────────────────────────────────────
+Epoch 5 | val_loss=1.3984 | BLEU=18.46 | BLEU-1=44.69 BLEU-2=24.45 BLEU-3=15.35 BLEU-4=10.74 | chrF=43.34 | chrF++=40.43 | ROUGE-1=44.79 ROUGE-2=27.26 ROUGE-L=41.54
+Epoch   5 | train_loss=1.4577 | val_loss=1.3984 | BLEU=18.46
+Epoch 6 [train]: 100%|██████████| 1774/1774 [12:31<00:00,  2.36it/s, loss=1.3254]
+Epoch 6 [val]: 100%|██████████| 130/130 [01:51<00:00,  1.17it/s]
+
+────────────────────────────────────────────────────────────────────────
+  Sample predictions – Epoch 6
+────────────────────────────────────────────────────────────────────────
+  [1] Gloss : DRUCK TIEF KOMMEN
+      Hyp   : tiefer luftdruck bestimmt unser wetter
+      Ref   : tiefer luftdruck bestimmt in den nächsten tagen unser wetter
+  [2] Gloss : ES-BEDEUTET VIEL WOLKE UND KOENNEN REGEN GEWITTER KOENNEN
+      Hyp   : es bestehen entsprechende unwetterwarnung des deutschen wetterdienstes
+      Ref   : das bedeutet viele wolken und immer wieder zum teil kräftige schauer und gewitter
+  [3] Gloss : WIND MAESSIG SCHWACH REGION WENN GEWITTER WIND KOENNEN
+      Hyp   : der wind weht schwach bis mäßig an den küsten auch frisch mit gewittern
+      Ref   : meist weht nur ein schwacher wind aus unterschiedlichen richtungen der bei schauern und gewittern stark böig sein kann
+  [4] Gloss : MITTWOCH REGEN KOENNEN NORDWEST WAHRSCHEINLICH NORD STARK WIND
+      Hyp   : am mittwoch teilweise kräftige regenfälle im nordwesten ist es windig
+      Ref   : am mittwoch hier und da nieselregen in der nordwesthälfte an den küsten kräftiger wind
+  [5] Gloss : JETZT WETTER WIE-AUSSEHEN MORGEN FREITAG SECHSTE MAI ZEIGEN-BILDSCHIRM
+      Hyp   : und nun die wettervorhersage für morgen freitag den sechsten mai
+      Ref   : und nun die wettervorhersage für morgen freitag den sechsten mai
+────────────────────────────────────────────────────────────────────────
+Epoch 6 | val_loss=1.3390 | BLEU=18.73 | BLEU-1=46.98 BLEU-2=26.31 BLEU-3=17.05 BLEU-4=12.15 | chrF=43.64 | chrF++=40.68 | ROUGE-1=45.14 ROUGE-2=27.93 ROUGE-L=42.26
+Epoch   6 | train_loss=1.3254 | val_loss=1.3390 | BLEU=18.73
+Epoch 7 [train]: 100%|██████████| 1774/1774 [12:33<00:00,  2.36it/s, loss=1.2071]
+Epoch 7 [val]: 100%|██████████| 130/130 [01:57<00:00,  1.11it/s]
+
+────────────────────────────────────────────────────────────────────────
+  Sample predictions – Epoch 7
+────────────────────────────────────────────────────────────────────────
+  [1] Gloss : DRUCK TIEF KOMMEN
+      Hyp   : tiefdruckgebiete überqueren uns in den nächsten tagen
+      Ref   : tiefer luftdruck bestimmt in den nächsten tagen unser wetter
+  [2] Gloss : ES-BEDEUTET VIEL WOLKE UND KOENNEN REGEN GEWITTER KOENNEN
+      Hyp   : viele wolken bringen uns heute nacht zum teil heftige schauer und gewitter
+      Ref   : das bedeutet viele wolken und immer wieder zum teil kräftige schauer und gewitter
+  [3] Gloss : WIND MAESSIG SCHWACH REGION WENN GEWITTER WIND KOENNEN
+      Hyp   : der wind weht schwach bis mäßig mitunter auch frisch bei gewittern sind sturmböen möglich
+      Ref   : meist weht nur ein schwacher wind aus unterschiedlichen richtungen der bei schauern und gewittern stark böig sein kann
+  [4] Gloss : MITTWOCH REGEN KOENNEN NORDWEST WAHRSCHEINLICH NORD STARK WIND
+      Hyp   : am mittwoch regnet es gebietsweise im norden und westen ist es stark bewölkt
+      Ref   : am mittwoch hier und da nieselregen in der nordwesthälfte an den küsten kräftiger wind
+  [5] Gloss : JETZT WETTER WIE-AUSSEHEN MORGEN FREITAG SECHSTE MAI ZEIGEN-BILDSCHIRM
+      Hyp   : und nun die wettervorhersage für morgen freitag den sechsten mai
+      Ref   : und nun die wettervorhersage für morgen freitag den sechsten mai
+────────────────────────────────────────────────────────────────────────
+Epoch 7 | val_loss=1.3171 | BLEU=20.03 | BLEU-1=48.16 BLEU-2=26.75 BLEU-3=17.26 BLEU-4=12.30 | chrF=45.50 | chrF++=42.57 | ROUGE-1=47.51 ROUGE-2=29.29 ROUGE-L=44.13
+Epoch   7 | train_loss=1.2071 | val_loss=1.3171 | BLEU=20.03
+Epoch 8 [train]: 100%|██████████| 1774/1774 [12:33<00:00,  2.35it/s, loss=1.1083]
+Epoch 8 [val]: 100%|██████████| 130/130 [01:45<00:00,  1.23it/s]
+
+────────────────────────────────────────────────────────────────────────
+  Sample predictions – Epoch 8
+────────────────────────────────────────────────────────────────────────
+  [1] Gloss : DRUCK TIEF KOMMEN
+      Hyp   : tiefer luftdruck bestimmt unser wetter
+      Ref   : tiefer luftdruck bestimmt in den nächsten tagen unser wetter
+  [2] Gloss : ES-BEDEUTET VIEL WOLKE UND KOENNEN REGEN GEWITTER KOENNEN
+      Hyp   : es bringt viele wolken und gebietsweise schauer und gewitter
+      Ref   : das bedeutet viele wolken und immer wieder zum teil kräftige schauer und gewitter
+  [3] Gloss : WIND MAESSIG SCHWACH REGION WENN GEWITTER WIND KOENNEN
+      Hyp   : der wind weht schwach bis mäßig aus unterschiedlichen richtungen
+      Ref   : meist weht nur ein schwacher wind aus unterschiedlichen richtungen der bei schauern und gewittern stark böig sein kann
+  [4] Gloss : MITTWOCH REGEN KOENNEN NORDWEST WAHRSCHEINLICH NORD STARK WIND
+      Hyp   : am mittwoch regnet es gebietsweise im norden und westen ist es windig
+      Ref   : am mittwoch hier und da nieselregen in der nordwesthälfte an den küsten kräftiger wind
+  [5] Gloss : JETZT WETTER WIE-AUSSEHEN MORGEN FREITAG SECHSTE MAI ZEIGEN-BILDSCHIRM
+      Hyp   : und nun die wettervorhersage für morgen freitag den sechsten mai
+      Ref   : und nun die wettervorhersage für morgen freitag den sechsten mai
+────────────────────────────────────────────────────────────────────────
+Epoch 8 | val_loss=1.2859 | BLEU=21.62 | BLEU-1=50.79 BLEU-2=30.03 BLEU-3=20.11 BLEU-4=14.67 | chrF=45.95 | chrF++=43.25 | ROUGE-1=48.78 ROUGE-2=31.58 ROUGE-L=45.98
+Epoch   8 | train_loss=1.1083 | val_loss=1.2859 | BLEU=21.62
+Epoch 9 [train]: 100%|██████████| 1774/1774 [12:28<00:00,  2.37it/s, loss=1.0190]
+Epoch 9 [val]: 100%|██████████| 130/130 [01:51<00:00,  1.16it/s]
+
+────────────────────────────────────────────────────────────────────────
+  Sample predictions – Epoch 9
+────────────────────────────────────────────────────────────────────────
+  [1] Gloss : DRUCK TIEF KOMMEN
+      Hyp   : tiefer luftdruck bestimmt unser wetter
+      Ref   : tiefer luftdruck bestimmt in den nächsten tagen unser wetter
+  [2] Gloss : ES-BEDEUTET VIEL WOLKE UND KOENNEN REGEN GEWITTER KOENNEN
+      Hyp   : es gibt viele wolken die hier und da schauer oder gewitter bringen
+      Ref   : das bedeutet viele wolken und immer wieder zum teil kräftige schauer und gewitter
+  [3] Gloss : WIND MAESSIG SCHWACH REGION WENN GEWITTER WIND KOENNEN
+      Hyp   : der wind weht schwach bis mäßig aus unterschiedlichen richtungen bei gewittern sind stürmische böen möglich
+      Ref   : meist weht nur ein schwacher wind aus unterschiedlichen richtungen der bei schauern und gewittern stark böig sein kann
+  [4] Gloss : MITTWOCH REGEN KOENNEN NORDWEST WAHRSCHEINLICH NORD STARK WIND
+      Hyp   : am mittwoch regnet es stellenweise kräftig im norden und westen ist es stark bewölkt
+      Ref   : am mittwoch hier und da nieselregen in der nordwesthälfte an den küsten kräftiger wind
+  [5] Gloss : JETZT WETTER WIE-AUSSEHEN MORGEN FREITAG SECHSTE MAI ZEIGEN-BILDSCHIRM
+      Hyp   : und nun die wettervorhersage für morgen freitag den sechsten mai
+      Ref   : und nun die wettervorhersage für morgen freitag den sechsten mai
+────────────────────────────────────────────────────────────────────────
+Epoch 9 | val_loss=1.2898 | BLEU=21.06 | BLEU-1=49.32 BLEU-2=28.00 BLEU-3=18.41 BLEU-4=13.33 | chrF=46.17 | chrF++=43.32 | ROUGE-1=48.52 ROUGE-2=30.46 ROUGE-L=45.14
+Epoch   9 | train_loss=1.0190 | val_loss=1.2898 | BLEU=21.06
+Epoch 10 [train]: 100%|██████████| 1774/1774 [12:32<00:00,  2.36it/s, loss=0.9392]
+Epoch 10 [val]: 100%|██████████| 130/130 [01:48<00:00,  1.19it/s]
+
+────────────────────────────────────────────────────────────────────────
+  Sample predictions – Epoch 10
+────────────────────────────────────────────────────────────────────────
+  [1] Gloss : DRUCK TIEF KOMMEN
+      Hyp   : tiefer luftdruck bestimmt weiter unser wetter
+      Ref   : tiefer luftdruck bestimmt in den nächsten tagen unser wetter
+  [2] Gloss : ES-BEDEUTET VIEL WOLKE UND KOENNEN REGEN GEWITTER KOENNEN
+      Hyp   : dazu gibt es viele wolken und einzelne schauer oder gewitter
+      Ref   : das bedeutet viele wolken und immer wieder zum teil kräftige schauer und gewitter
+  [3] Gloss : WIND MAESSIG SCHWACH REGION WENN GEWITTER WIND KOENNEN
+      Hyp   : der wind weht schwach bis mäßig bei gewittern sind sturmböen möglich
+      Ref   : meist weht nur ein schwacher wind aus unterschiedlichen richtungen der bei schauern und gewittern stark böig sein kann
+  [4] Gloss : MITTWOCH REGEN KOENNEN NORDWEST WAHRSCHEINLICH NORD STARK WIND
+      Hyp   : am mittwoch regnet oder schauert es verbreitet im norden und westen ist es sehr windig
+      Ref   : am mittwoch hier und da nieselregen in der nordwesthälfte an den küsten kräftiger wind
+  [5] Gloss : JETZT WETTER WIE-AUSSEHEN MORGEN FREITAG SECHSTE MAI ZEIGEN-BILDSCHIRM
+      Hyp   : und nun die wettervorhersage für morgen freitag den sechsten mai
+      Ref   : und nun die wettervorhersage für morgen freitag den sechsten mai
+────────────────────────────────────────────────────────────────────────
+Epoch 10 | val_loss=1.2896 | BLEU=21.39 | BLEU-1=50.02 BLEU-2=28.94 BLEU-3=18.87 BLEU-4=13.85 | chrF=46.49 | chrF++=43.66 | ROUGE-1=49.12 ROUGE-2=31.09 ROUGE-L=46.11
+Epoch  10 | train_loss=0.9392 | val_loss=1.2896 | BLEU=21.39
+Epoch 11 [train]: 100%|██████████| 1774/1774 [12:28<00:00,  2.37it/s, loss=0.8646]
+Epoch 11 [val]: 100%|██████████| 130/130 [02:01<00:00,  1.07it/s]
+
+────────────────────────────────────────────────────────────────────────
+  Sample predictions – Epoch 11
+────────────────────────────────────────────────────────────────────────
+  [1] Gloss : DRUCK TIEF KOMMEN
+      Hyp   : tiefer luftdruck bestimmt weiter unser wetter
+      Ref   : tiefer luftdruck bestimmt in den nächsten tagen unser wetter
+  [2] Gloss : ES-BEDEUTET VIEL WOLKE UND KOENNEN REGEN GEWITTER KOENNEN
+      Hyp   : es sorgt für viele wolken gebietsweise für regen und zum teil auch für heftige gewitter
+      Ref   : das bedeutet viele wolken und immer wieder zum teil kräftige schauer und gewitter
+  [3] Gloss : WIND MAESSIG SCHWACH REGION WENN GEWITTER WIND KOENNEN
+      Hyp   : der wind weht schwach bis mäßig an der see auch frisch bei gewittern sind sturmböen möglich
+      Ref   : meist weht nur ein schwacher wind aus unterschiedlichen richtungen der bei schauern und gewittern stark böig sein kann
+  [4] Gloss : MITTWOCH REGEN KOENNEN NORDWEST WAHRSCHEINLICH NORD STARK WIND
+      Hyp   : am mittwoch regnet es stellenweise etwas im norden und westen ist es sehr windig
+      Ref   : am mittwoch hier und da nieselregen in der nordwesthälfte an den küsten kräftiger wind
+  [5] Gloss : JETZT WETTER WIE-AUSSEHEN MORGEN FREITAG SECHSTE MAI ZEIGEN-BILDSCHIRM
+      Hyp   : und nun die wettervorhersage für morgen freitag den sechsten mai
+      Ref   : und nun die wettervorhersage für morgen freitag den sechsten mai
+────────────────────────────────────────────────────────────────────────
+Epoch 11 | val_loss=1.3104 | BLEU=22.18 | BLEU-1=48.15 BLEU-2=27.66 BLEU-3=18.16 BLEU-4=13.33 | chrF=48.00 | chrF++=44.95 | ROUGE-1=48.74 ROUGE-2=30.92 ROUGE-L=45.45
+Epoch  11 | train_loss=0.8646 | val_loss=1.3104 | BLEU=22.18
+Epoch 12 [train]: 100%|██████████| 1774/1774 [12:31<00:00,  2.36it/s, loss=0.7977]
+Epoch 12 [val]: 100%|██████████| 130/130 [01:51<00:00,  1.17it/s]
+
+────────────────────────────────────────────────────────────────────────
+  Sample predictions – Epoch 12
+────────────────────────────────────────────────────────────────────────
+  [1] Gloss : DRUCK TIEF KOMMEN
+      Hyp   : tiefer luftdruck bestimmt weiter unser wetter
+      Ref   : tiefer luftdruck bestimmt in den nächsten tagen unser wetter
+  [2] Gloss : ES-BEDEUTET VIEL WOLKE UND KOENNEN REGEN GEWITTER KOENNEN
+      Hyp   : dazu gibt es viele wolken und teilweise kräftige schauer oder gewitter
+      Ref   : das bedeutet viele wolken und immer wieder zum teil kräftige schauer und gewitter
+  [3] Gloss : WIND MAESSIG SCHWACH REGION WENN GEWITTER WIND KOENNEN
+      Hyp   : der wind weht schwach bis mäßig bei gewittern starke böen
+      Ref   : meist weht nur ein schwacher wind aus unterschiedlichen richtungen der bei schauern und gewittern stark böig sein kann
+  [4] Gloss : MITTWOCH REGEN KOENNEN NORDWEST WAHRSCHEINLICH NORD STARK WIND
+      Hyp   : am mittwoch regnet es stellenweise etwas im norden und westen ist es sehr windig
+      Ref   : am mittwoch hier und da nieselregen in der nordwesthälfte an den küsten kräftiger wind
+  [5] Gloss : JETZT WETTER WIE-AUSSEHEN MORGEN FREITAG SECHSTE MAI ZEIGEN-BILDSCHIRM
+      Hyp   : und nun die wettervorhersage für morgen freitag den sechsten mai
+      Ref   : und nun die wettervorhersage für morgen freitag den sechsten mai
+────────────────────────────────────────────────────────────────────────
+Epoch 12 | val_loss=1.3222 | BLEU=22.11 | BLEU-1=50.72 BLEU-2=29.65 BLEU-3=19.62 BLEU-4=14.51 | chrF=47.19 | chrF++=44.36 | ROUGE-1=49.68 ROUGE-2=31.73 ROUGE-L=46.71
+Epoch  12 | train_loss=0.7977 | val_loss=1.3222 | BLEU=22.11
+Epoch 13 [train]: 100%|██████████| 1774/1774 [12:33<00:00,  2.36it/s, loss=0.7359]
+Epoch 13 [val]: 100%|██████████| 130/130 [01:53<00:00,  1.14it/s]
+
+────────────────────────────────────────────────────────────────────────
+  Sample predictions – Epoch 13
+────────────────────────────────────────────────────────────────────────
+  [1] Gloss : DRUCK TIEF KOMMEN
+      Hyp   : tiefer luftdruck bestimmt unser wetter
+      Ref   : tiefer luftdruck bestimmt in den nächsten tagen unser wetter
+  [2] Gloss : ES-BEDEUTET VIEL WOLKE UND KOENNEN REGEN GEWITTER KOENNEN
+      Hyp   : dazu gibt es viele wolken gebietsweise auch kräftige schauer und gewitter
+      Ref   : das bedeutet viele wolken und immer wieder zum teil kräftige schauer und gewitter
+  [3] Gloss : WIND MAESSIG SCHWACH REGION WENN GEWITTER WIND KOENNEN
+      Hyp   : der wind weht schwach bis mäßig bei gewittern sind stürmische böen möglich
+      Ref   : meist weht nur ein schwacher wind aus unterschiedlichen richtungen der bei schauern und gewittern stark böig sein kann
+  [4] Gloss : MITTWOCH REGEN KOENNEN NORDWEST WAHRSCHEINLICH NORD STARK WIND
+      Hyp   : am mittwoch regnet es hier und da etwas im nordwesten ist es sehr windig
+      Ref   : am mittwoch hier und da nieselregen in der nordwesthälfte an den küsten kräftiger wind
+  [5] Gloss : JETZT WETTER WIE-AUSSEHEN MORGEN FREITAG SECHSTE MAI ZEIGEN-BILDSCHIRM
+      Hyp   : und nun die wettervorhersage für morgen freitag den sechsten mai
+      Ref   : und nun die wettervorhersage für morgen freitag den sechsten mai
+────────────────────────────────────────────────────────────────────────
+Epoch 13 | val_loss=1.3427 | BLEU=22.62 | BLEU-1=50.06 BLEU-2=29.04 BLEU-3=19.16 BLEU-4=13.81 | chrF=47.93 | chrF++=45.11 | ROUGE-1=50.10 ROUGE-2=31.90 ROUGE-L=47.02
+Epoch  13 | train_loss=0.7359 | val_loss=1.3427 | BLEU=22.62
+Epoch 14 [train]: 100%|██████████| 1774/1774 [12:32<00:00,  2.36it/s, loss=0.6897]
+Epoch 14 [val]: 100%|██████████| 130/130 [01:51<00:00,  1.17it/s]
+
+────────────────────────────────────────────────────────────────────────
+  Sample predictions – Epoch 14
+────────────────────────────────────────────────────────────────────────
+  [1] Gloss : DRUCK TIEF KOMMEN
+      Hyp   : tiefer luftdruck bestimmt weiter unser wetter
+      Ref   : tiefer luftdruck bestimmt in den nächsten tagen unser wetter
+  [2] Gloss : ES-BEDEUTET VIEL WOLKE UND KOENNEN REGEN GEWITTER KOENNEN
+      Hyp   : dazu gibt es viele wolken und teilweise kräftige schauer und gewitter
+      Ref   : das bedeutet viele wolken und immer wieder zum teil kräftige schauer und gewitter
+  [3] Gloss : WIND MAESSIG SCHWACH REGION WENN GEWITTER WIND KOENNEN
+      Hyp   : der wind weht schwach bis mäßig bei gewittern sind stürmische böen möglich
+      Ref   : meist weht nur ein schwacher wind aus unterschiedlichen richtungen der bei schauern und gewittern stark böig sein kann
+  [4] Gloss : MITTWOCH REGEN KOENNEN NORDWEST WAHRSCHEINLICH NORD STARK WIND
+      Hyp   : am mittwoch regnet oder schauert es verbreitet im norden und westen ist es sehr windig
+      Ref   : am mittwoch hier und da nieselregen in der nordwesthälfte an den küsten kräftiger wind
+  [5] Gloss : JETZT WETTER WIE-AUSSEHEN MORGEN FREITAG SECHSTE MAI ZEIGEN-BILDSCHIRM
+      Hyp   : und nun die wettervorhersage für morgen freitag den sechsten mai
+      Ref   : und nun die wettervorhersage für morgen freitag den sechsten mai
+────────────────────────────────────────────────────────────────────────
+Epoch 14 | val_loss=1.3703 | BLEU=22.26 | BLEU-1=50.67 BLEU-2=29.11 BLEU-3=19.30 BLEU-4=14.04 | chrF=47.74 | chrF++=44.86 | ROUGE-1=50.07 ROUGE-2=31.61 ROUGE-L=47.04
+Epoch  14 | train_loss=0.6897 | val_loss=1.3703 | BLEU=22.26
+Epoch 15 [train]: 100%|██████████| 1774/1774 [12:35<00:00,  2.35it/s, loss=0.6491]
+Epoch 15 [val]: 100%|██████████| 130/130 [01:52<00:00,  1.15it/s]
+
+────────────────────────────────────────────────────────────────────────
+  Sample predictions – Epoch 15
+────────────────────────────────────────────────────────────────────────
+  [1] Gloss : DRUCK TIEF KOMMEN
+      Hyp   : tiefer luftdruck bestimmt weiter unser wetter
+      Ref   : tiefer luftdruck bestimmt in den nächsten tagen unser wetter
+  [2] Gloss : ES-BEDEUTET VIEL WOLKE UND KOENNEN REGEN GEWITTER KOENNEN
+      Hyp   : dazu gibt es viele wolken und teilweise kräftige schauer oder gewitter
+      Ref   : das bedeutet viele wolken und immer wieder zum teil kräftige schauer und gewitter
+  [3] Gloss : WIND MAESSIG SCHWACH REGION WENN GEWITTER WIND KOENNEN
+      Hyp   : der wind weht schwach bis mäßig bei gewittern sind stürmische böen möglich
+      Ref   : meist weht nur ein schwacher wind aus unterschiedlichen richtungen der bei schauern und gewittern stark böig sein kann
+  [4] Gloss : MITTWOCH REGEN KOENNEN NORDWEST WAHRSCHEINLICH NORD STARK WIND
+      Hyp   : am mittwoch regnet es stellenweise etwas im norden und westen ist es sehr windig
+      Ref   : am mittwoch hier und da nieselregen in der nordwesthälfte an den küsten kräftiger wind
+  [5] Gloss : JETZT WETTER WIE-AUSSEHEN MORGEN FREITAG SECHSTE MAI ZEIGEN-BILDSCHIRM
+      Hyp   : und nun die wettervorhersage für morgen freitag den sechsten mai
+      Ref   : und nun die wettervorhersage für morgen freitag den sechsten mai
+────────────────────────────────────────────────────────────────────────
+Epoch 15 | val_loss=1.3815 | BLEU=22.23 | BLEU-1=49.87 BLEU-2=28.41 BLEU-3=18.57 BLEU-4=13.57 | chrF=47.84 | chrF++=44.95 | ROUGE-1=49.99 ROUGE-2=31.48 ROUGE-L=46.87
+Epoch  15 | train_loss=0.6491 | val_loss=1.3815 | BLEU=22.23

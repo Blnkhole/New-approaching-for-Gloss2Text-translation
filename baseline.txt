@@ -1,0 +1,231 @@
+[Init] GlossEncoder (mBART encoder, shared weights)…
+  [mBART-Enc] total=408,264,704 | frozen=357,879,808 | trainable=50,384,896 (top 4 layers)
+[Init] ARTextDecoder (mBART decoder, shared weights)…
+  [mBART-Dec] decoder total=458,670,080 | decoder trainable=424,011,776 | lm_head trainable=256,055,296 | self_attn unfreeze top=4
+
+[Init] Baseline pipeline ready.
+Total params     : 610,879,488
+Trainable params : 474,396,672
+
+[Param groups]
+  mbart_decoder           lr=2.00e-05  params=151,154,688
+  mbart_enc_top           lr=1.00e-05  params=50,384,896
+  lm_head                 lr=4.00e-06  params=256,055,296
+  mbart_self_attn         lr=8.00e-06  params=16,801,792
+
+Epoch 1 [train]: 100%|██████████| 2380/2380 [16:14<00:00,  2.44it/s, loss=4.6897]
+
+────────────────────────────────────────────────────────────────────────
+  Sample predictions – Epoch 1
+────────────────────────────────────────────────────────────────────────
+  [1] Gloss : NHỮNG TRANG WEB GIẢ MẠO NGÂN HÀNG LỪA ĐẢO CẨN THẬN CẦN
+      Hyp   : Những trang web thương mại ngân hàng phải đảm bảo an ninh.
+      Ref   : Cẩn thận với những trang web giả mạo ngân hàng để lừa đảo.
+  [2] Gloss : CHO TÔI KIỂM TRA ?
+      Hyp   : Cho tôi kiểm tra?
+      Ref   : Cho tôi kiểm tra nhé?
+  [3] Gloss : TÔI CÔNG VIỆC NHẬN TÔI CẢM THẤY CHÁN
+      Hyp   : Tôi đã nhận được một công việc. Cảm ơn.
+      Ref   : Tôi cảm thấy vô cùng chán. Tôi sẽ nhận một công việc.
+  [4] Gloss : TỐT TỐI NAY GIỜ 8
+      Hyp   : Tốt tối nay là 8 giờ.
+      Ref   : Tốt, 8 giờ tối nay.
+  [5] Gloss : BỆNH CÚM ĐƯỜNG HÔ HẤP LÂY NHIỄM RẤT NHANH
+      Hyp   : Bệnh cúm đường hấp lây nhiễm rất nhanh.
+      Ref   : Bệnh cúm có thể lây nhiễm rất nhanh qua đường hô hấp.
+────────────────────────────────────────────────────────────────────────
+Epoch 1 | val_loss=1.5750 | BLEU=25.11 | BLEU-1=68.48 BLEU-2=38.94 BLEU-3=23.65 BLEU-4=15.57 | chrF=44.68 | chrF++=44.82 | ROUGE-1=72.05 ROUGE-2=52.53 ROUGE-L=63.93
+Epoch   1 | train_loss=4.6897 | val_loss=1.5750 | BLEU=25.11
+Epoch 2 [train]: 100%|██████████| 2380/2380 [16:19<00:00,  2.43it/s, loss=1.4424]
+
+────────────────────────────────────────────────────────────────────────
+  Sample predictions – Epoch 2
+────────────────────────────────────────────────────────────────────────
+  [1] Gloss : NHỮNG TRANG WEB GIẢ MẠO NGÂN HÀNG LỪA ĐẢO CẨN THẬN CẦN
+      Hyp   : Những trang web thương mại cần đảm bảo an ninh.
+      Ref   : Cẩn thận với những trang web giả mạo ngân hàng để lừa đảo.
+  [2] Gloss : CHO TÔI KIỂM TRA ?
+      Hyp   : Cho tôi kiểm tra?
+      Ref   : Cho tôi kiểm tra nhé?
+  [3] Gloss : TÔI CÔNG VIỆC NHẬN TÔI CẢM THẤY CHÁN
+      Hyp   : Tôi đã nhận được công việc. Tôi cảm thấy rất phấn khích.
+      Ref   : Tôi cảm thấy vô cùng chán. Tôi sẽ nhận một công việc.
+  [4] Gloss : TỐT TỐI NAY GIỜ 8
+      Hyp   : Tốt, tối nay là 8.
+      Ref   : Tốt, 8 giờ tối nay.
+  [5] Gloss : BỆNH CÚM ĐƯỜNG HÔ HẤP LÂY NHIỄM RẤT NHANH
+      Hyp   : Bệnh cúm đường hô hấp lây nhiễm rất nhanh.
+      Ref   : Bệnh cúm có thể lây nhiễm rất nhanh qua đường hô hấp.
+────────────────────────────────────────────────────────────────────────
+Epoch 2 | val_loss=1.2220 | BLEU=34.36 | BLEU-1=75.54 BLEU-2=48.96 BLEU-3=33.42 BLEU-4=23.65 | chrF=53.22 | chrF++=53.39 | ROUGE-1=78.06 ROUGE-2=61.35 ROUGE-L=70.81
+Epoch   2 | train_loss=1.4424 | val_loss=1.2220 | BLEU=34.36
+Epoch 3 [train]: 100%|██████████| 2380/2380 [16:30<00:00,  2.40it/s, loss=1.0832]
+
+────────────────────────────────────────────────────────────────────────
+  Sample predictions – Epoch 3
+────────────────────────────────────────────────────────────────────────
+  [1] Gloss : NHỮNG TRANG WEB GIẢ MẠO NGÂN HÀNG LỪA ĐẢO CẨN THẬN CẦN
+      Hyp   : Những trang web thương mại cần đảm bảo tính cạnh tranh.
+      Ref   : Cẩn thận với những trang web giả mạo ngân hàng để lừa đảo.
+  [2] Gloss : CHO TÔI KIỂM TRA ?
+      Hyp   : Cho tôi kiểm tra?
+      Ref   : Cho tôi kiểm tra nhé?
+  [3] Gloss : TÔI CÔNG VIỆC NHẬN TÔI CẢM THẤY CHÁN
+      Hyp   : Tôi cảm thấy rất phấn khích khi nhận được công việc.
+      Ref   : Tôi cảm thấy vô cùng chán. Tôi sẽ nhận một công việc.
+  [4] Gloss : TỐT TỐI NAY GIỜ 8
+      Hyp   : Tốt, tối nay là 8 giờ.
+      Ref   : Tốt, 8 giờ tối nay.
+  [5] Gloss : BỆNH CÚM ĐƯỜNG HÔ HẤP LÂY NHIỄM RẤT NHANH
+      Hyp   : Bệnh cúm đường hô hấp rất lây nhiễm rất nhanh.
+      Ref   : Bệnh cúm có thể lây nhiễm rất nhanh qua đường hô hấp.
+────────────────────────────────────────────────────────────────────────
+Epoch 3 | val_loss=1.1560 | BLEU=36.12 | BLEU-1=74.09 BLEU-2=48.64 BLEU-3=33.32 BLEU-4=23.62 | chrF=55.06 | chrF++=55.17 | ROUGE-1=78.48 ROUGE-2=61.60 ROUGE-L=71.17
+Epoch   3 | train_loss=1.0832 | val_loss=1.1560 | BLEU=36.12
+Epoch 4 [train]: 100%|██████████| 2380/2380 [16:23<00:00,  2.42it/s, loss=0.8957]
+
+────────────────────────────────────────────────────────────────────────
+  Sample predictions – Epoch 4
+────────────────────────────────────────────────────────────────────────
+  [1] Gloss : NHỮNG TRANG WEB GIẢ MẠO NGÂN HÀNG LỪA ĐẢO CẨN THẬN CẦN
+      Hyp   : Những trang web quảng bá lừa đảo cần được đảm bảo.
+      Ref   : Cẩn thận với những trang web giả mạo ngân hàng để lừa đảo.
+  [2] Gloss : CHO TÔI KIỂM TRA ?
+      Hyp   : Cho tôi kiểm tra?
+      Ref   : Cho tôi kiểm tra nhé?
+  [3] Gloss : TÔI CÔNG VIỆC NHẬN TÔI CẢM THẤY CHÁN
+      Hyp   : Tôi cảm thấy chán nản về công việc của mình.
+      Ref   : Tôi cảm thấy vô cùng chán. Tôi sẽ nhận một công việc.
+  [4] Gloss : TỐT TỐI NAY GIỜ 8
+      Hyp   : Tốt, tối nay là 8 giờ.
+      Ref   : Tốt, 8 giờ tối nay.
+  [5] Gloss : BỆNH CÚM ĐƯỜNG HÔ HẤP LÂY NHIỄM RẤT NHANH
+      Hyp   : Bệnh cúm đường hô hấp lây nhiễm rất nhanh.
+      Ref   : Bệnh cúm có thể lây nhiễm rất nhanh qua đường hô hấp.
+────────────────────────────────────────────────────────────────────────
+Epoch 4 | val_loss=1.1301 | BLEU=37.65 | BLEU-1=74.84 BLEU-2=50.27 BLEU-3=35.18 BLEU-4=25.63 | chrF=55.76 | chrF++=55.91 | ROUGE-1=78.90 ROUGE-2=62.73 ROUGE-L=72.15
+Epoch   4 | train_loss=0.8957 | val_loss=1.1301 | BLEU=37.65
+Epoch 5 [train]: 100%|██████████| 2380/2380 [16:35<00:00,  2.39it/s, loss=0.7620]
+
+────────────────────────────────────────────────────────────────────────
+  Sample predictions – Epoch 5
+────────────────────────────────────────────────────────────────────────
+  [1] Gloss : NHỮNG TRANG WEB GIẢ MẠO NGÂN HÀNG LỪA ĐẢO CẨN THẬN CẦN
+      Hyp   : Những trang web thương mại cần đảm bảo thanh toán từ ngân hàng.
+      Ref   : Cẩn thận với những trang web giả mạo ngân hàng để lừa đảo.
+  [2] Gloss : CHO TÔI KIỂM TRA ?
+      Hyp   : Cho tôi kiểm tra?
+      Ref   : Cho tôi kiểm tra nhé?
+  [3] Gloss : TÔI CÔNG VIỆC NHẬN TÔI CẢM THẤY CHÁN
+      Hyp   : Tôi cảm thấy chán nản khi nhận được công việc.
+      Ref   : Tôi cảm thấy vô cùng chán. Tôi sẽ nhận một công việc.
+  [4] Gloss : TỐT TỐI NAY GIỜ 8
+      Hyp   : Tốt, tối nay sẽ là 8 giờ.
+      Ref   : Tốt, 8 giờ tối nay.
+  [5] Gloss : BỆNH CÚM ĐƯỜNG HÔ HẤP LÂY NHIỄM RẤT NHANH
+      Hyp   : Bệnh cúm đường hô hấp lây nhiễm rất nhanh.
+      Ref   : Bệnh cúm có thể lây nhiễm rất nhanh qua đường hô hấp.
+────────────────────────────────────────────────────────────────────────
+Epoch 5 | val_loss=1.1433 | BLEU=38.16 | BLEU-1=73.92 BLEU-2=49.63 BLEU-3=34.87 BLEU-4=25.74 | chrF=56.17 | chrF++=56.28 | ROUGE-1=78.77 ROUGE-2=62.47 ROUGE-L=71.93
+Epoch   5 | train_loss=0.7620 | val_loss=1.1433 | BLEU=38.16
+Epoch 6 [train]: 100%|██████████| 2380/2380 [16:28<00:00,  2.41it/s, loss=0.6577]
+
+────────────────────────────────────────────────────────────────────────
+  Sample predictions – Epoch 6
+────────────────────────────────────────────────────────────────────────
+  [1] Gloss : NHỮNG TRANG WEB GIẢ MẠO NGÂN HÀNG LỪA ĐẢO CẨN THẬN CẦN
+      Hyp   : Những trang web thương mại cần đảm bảo thanh toán từ ngân hàng.
+      Ref   : Cẩn thận với những trang web giả mạo ngân hàng để lừa đảo.
+  [2] Gloss : CHO TÔI KIỂM TRA ?
+      Hyp   : Cho tôi kiểm tra?
+      Ref   : Cho tôi kiểm tra nhé?
+  [3] Gloss : TÔI CÔNG VIỆC NHẬN TÔI CẢM THẤY CHÁN
+      Hyp   : Tôi cảm thấy chán nản khi nhận được công việc.
+      Ref   : Tôi cảm thấy vô cùng chán. Tôi sẽ nhận một công việc.
+  [4] Gloss : TỐT TỐI NAY GIỜ 8
+      Hyp   : Tốt, tối nay là 8
+      Ref   : Tốt, 8 giờ tối nay.
+  [5] Gloss : BỆNH CÚM ĐƯỜNG HÔ HẤP LÂY NHIỄM RẤT NHANH
+      Hyp   : Bệnh cúm đường hô hấp là một bệnh lây nhiễm rất nhanh.
+      Ref   : Bệnh cúm có thể lây nhiễm rất nhanh qua đường hô hấp.
+────────────────────────────────────────────────────────────────────────
+Epoch 6 | val_loss=1.1769 | BLEU=38.45 | BLEU-1=74.77 BLEU-2=50.12 BLEU-3=35.35 BLEU-4=26.16 | chrF=56.47 | chrF++=56.61 | ROUGE-1=79.06 ROUGE-2=62.85 ROUGE-L=72.20
+Epoch   6 | train_loss=0.6577 | val_loss=1.1769 | BLEU=38.45
+Epoch 7 [train]: 100%|██████████| 2380/2380 [16:38<00:00,  2.38it/s, loss=0.5856]
+
+
+────────────────────────────────────────────────────────────────────────
+  Sample predictions – Epoch 7
+────────────────────────────────────────────────────────────────────────
+  [1] Gloss : NHỮNG TRANG WEB GIẢ MẠO NGÂN HÀNG LỪA ĐẢO CẨN THẬN CẦN
+      Hyp   : Những trang web thương mại cần đảm bảo thanh toán từ ngân hàng.
+      Ref   : Cẩn thận với những trang web giả mạo ngân hàng để lừa đảo.
+  [2] Gloss : CHO TÔI KIỂM TRA ?
+      Hyp   : Cho tôi kiểm tra nhé?
+      Ref   : Cho tôi kiểm tra nhé?
+  [3] Gloss : TÔI CÔNG VIỆC NHẬN TÔI CẢM THẤY CHÁN
+      Hyp   : Tôi cảm thấy chán nản với công việc của mình.
+      Ref   : Tôi cảm thấy vô cùng chán. Tôi sẽ nhận một công việc.
+  [4] Gloss : TỐT TỐI NAY GIỜ 8
+      Hyp   : Tốt, bây giờ là 8 giờ.
+      Ref   : Tốt, 8 giờ tối nay.
+  [5] Gloss : BỆNH CÚM ĐƯỜNG HÔ HẤP LÂY NHIỄM RẤT NHANH
+      Hyp   : Bệnh cúm đường hô hấp là một bệnh lây nhiễm rất nhanh.
+      Ref   : Bệnh cúm có thể lây nhiễm rất nhanh qua đường hô hấp.
+────────────────────────────────────────────────────────────────────────
+Epoch 7 | val_loss=1.1918 | BLEU=38.36 | BLEU-1=73.38 BLEU-2=49.19 BLEU-3=34.65 BLEU-4=25.48 | chrF=56.25 | chrF++=56.38 | ROUGE-1=78.86 ROUGE-2=62.49 ROUGE-L=72.07
+Epoch   7 | train_loss=0.5856 | val_loss=1.1918 | BLEU=38.36
+Epoch 8 [train]:  38%|███▊      | 909/2380 [06:26<10:26,  2.35it/s, loss=0.5326]
+
+────────────────────────────────────────────────────────────────────────
+  Sample predictions (first 10)
+────────────────────────────────────────────────────────────────────────
+  [01] Gloss : Ở ĐÓ PHONG CẢNH HÙNG VĨ
+       Hyp   : Phong cảnh ở đó thật hùng vĩ.
+       Ref   : Vâng. Phong cảnh ở đó thật hùng vĩ.
+  [02] Gloss : TUẦN NÀY CHỦ ĐỀ BÀI LUẬN LÀ BẢO VỆ MÔI TRƯỜNG
+       Hyp   : Chủ đề bài luận tuần này là về bảo vệ môi trường.
+       Ref   : Chủ đề bài luận tuần này là bảo vệ môi trường.
+  [03] Gloss : NGUYÊN NHÂN GÌ ?
+       Hyp   : Nguyên nhân là gì?
+       Ref   : Và nguyên nhân của điều đó là gì?
+  [04] Gloss : LOẠI 45 CÒN SAO
+       Hyp   : Còn 45 thì sao?
+       Ref   : Còn 45 thì sao?
+  [05] Gloss : CÔ NGƯỜI MẪU DÁNG CHUYÊN NGHIỆP ỐNG KÍNH MÁY ẢNH TẠO
+       Hyp   : Cô người mẫu chuyên nghiệp dùng ống kính máy ảnh tái tạo.
+       Ref   : Cô người mẫu tạo dáng chuyên nghiệp trước ống kính máy ảnh.
+  [06] Gloss : LĨNH VỰC NÀY BẠN KINH NGHIỆM CÓ KHÔNG ?
+       Hyp   : Bạn có kinh nghiệm trong lĩnh vực này không?
+       Ref   : Bạn có kinh nghiệm trong lĩnh vực này không?
+  [07] Gloss : VÂNG CẢM ƠN NÓI CHUYỆN
+       Hyp   : Vâng, cảm ơn bạn đã nói chuyện.
+       Ref   : Vâng. Cảm ơn đã nói chuyện.
+  [08] Gloss : HỌC SINH ĐỒNG PHỤC ĐẾN TRƯỜNG MẶC PHẢI
+       Hyp   : Học sinh phải đồng phục khi đến trường.
+       Ref   : Học sinh phải mặc áo đồng phục khi đến trường.
+  [09] Gloss : KHÁC BIỆT NHIỀU KHÔNG ?
+       Hyp   : Có khác biệt nhiều không?
+       Ref   : Có sự khác biệt lớn không?
+  [10] Gloss : CHÙA CHIỀN KHÔNG GIAN TĨNH LẶNG VÀ TRANG NGHIÊM
+       Hyp   : Chùa chiêng có không gian tĩnh lặng và trang nghiêm.
+       Ref   : Không gian chùa chiền thật tĩnh lặng và vô cùng trang nghiêm.
+────────────────────────────────────────────────────────────────────────
+
+========================================================================
+  TEST SET RESULTS
+========================================================================
+  Samples   : 1190
+  BLEU      : 36.93
+  BLEU-1    : 73.81
+  BLEU-2    : 48.83
+  BLEU-3    : 33.62
+  BLEU-4    : 24.14
+  chrF      : 55.63
+  chrF++    : 55.74
+  ROUGE-1   : 78.66
+  ROUGE-2   : 62.32
+  ROUGE-L   : 71.83
+========================================================================
+
+Predictions saved to: /content/drive/MyDrive/gloss2text/predictions_baseline.tsv
